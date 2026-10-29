@@ -10,7 +10,6 @@ import { ThemeToggle } from "./ThemeToggle";
 const NAV_LINKS = [
   { name: "About", href: "/#about" },
   { name: "What We Do", href: "/#what-we-do" },
-  { name: "HeyGen", href: "/heygen" },
   { name: "Events", href: "/#past-events" },
   { name: "Gallery", href: "/#gallery" },
   { name: "Team", href: "/#team" },
@@ -68,33 +67,15 @@ export function Navbar() {
                 : "border-transparent bg-transparent"
             }`}
           >
-            {NAV_LINKS.map((link) => {
-              const isHeyGen = link.href === "/heygen";
-              if (isHeyGen) {
-                return (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    className="relative flex items-center gap-1.5 rounded-full border border-brand/60 bg-brand/15 px-3 py-1.5 text-[12.5px] font-bold text-brand shadow-[0_0_15px_rgba(83,36,238,0.35)] transition-all duration-300 hover:bg-brand hover:text-white"
-                  >
-                    <span className="relative flex size-2">
-                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-80" />
-                      <span className="relative inline-flex size-2 rounded-full bg-brand" />
-                    </span>
-                    <span>{link.name}</span>
-                  </Link>
-                );
-              }
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="rounded-full px-3 py-2 text-[12.5px] font-medium text-muted-foreground transition-colors duration-200 hover:bg-surface-2 hover:text-foreground"
-                >
-                  {link.name}
-                </Link>
-              );
-            })}
+            {NAV_LINKS.map((link) => (
+              <Link
+                key={link.name}
+                href={link.href}
+                className="rounded-full px-3 py-2 text-[12.5px] font-medium text-muted-foreground transition-colors duration-200 hover:bg-surface-2 hover:text-foreground"
+              >
+                {link.name}
+              </Link>
+            ))}
           </nav>
 
           {/* Actions */}
@@ -132,38 +113,27 @@ export function Navbar() {
           >
             <div className="flex h-full flex-col justify-between px-6 pb-10 pt-28">
               <nav className="flex flex-col">
-                {NAV_LINKS.map((link, i) => {
-                  const isHeyGen = link.href === "/heygen";
-                  return (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, y: 14 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.04 + i * 0.035, duration: 0.4 }}
+                {NAV_LINKS.map((link, i) => (
+                  <motion.div
+                    key={link.name}
+                    initial={{ opacity: 0, y: 14 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.04 + i * 0.035, duration: 0.4 }}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="flex items-baseline justify-between border-b border-border py-4"
                     >
-                      <Link
-                        href={link.href}
-                        onClick={() => setMobileOpen(false)}
-                        className={`flex items-baseline justify-between border-b border-border py-4 ${
-                          isHeyGen ? "text-brand" : ""
-                        }`}
-                      >
-                        <span className="u-display text-[7vw] leading-none sm:text-3xl flex items-center gap-2.5">
-                          {link.name}
-                          {isHeyGen && (
-                            <span className="relative flex size-2.5">
-                              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-brand opacity-80" />
-                              <span className="relative inline-flex size-2.5 rounded-full bg-brand" />
-                            </span>
-                          )}
-                        </span>
-                        <span className="u-label-sm text-muted-foreground">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                      </Link>
-                    </motion.div>
-                  );
-                })}
+                      <span className="u-display text-[7vw] leading-none sm:text-3xl flex items-center gap-2.5">
+                        {link.name}
+                      </span>
+                      <span className="u-label-sm text-muted-foreground">
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </Link>
+                  </motion.div>
+                ))}
               </nav>
 
               <Link href="/#join" onClick={() => setMobileOpen(false)} className="mt-8">

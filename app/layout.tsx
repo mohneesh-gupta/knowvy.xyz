@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Anton, Manrope, JetBrains_Mono, Poppins } from "next/font/google";
+import { Anton, Manrope, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
 /* Condensed grotesk — display headlines only */
@@ -24,14 +24,6 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-/* HeyGen series display — geometric rounded sans (poster-matched) */
-const poppins = Poppins({
-  variable: "--font-poppins",
-  subsets: ["latin"],
-  weight: ["600", "700"],
-  display: "swap",
-});
-
 export const metadata: Metadata = {
   title: "Knowvy Technologies | Bhopal Student Community",
   description:
@@ -46,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${anton.variable} ${manrope.variable} ${jetbrainsMono.variable} ${poppins.variable} h-full antialiased`}
+      className={`${anton.variable} ${manrope.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>

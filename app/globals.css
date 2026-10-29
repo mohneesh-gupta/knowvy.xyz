@@ -16,7 +16,6 @@
   --font-display: var(--font-anton);
   --font-sans: var(--font-manrope);
   --font-mono: var(--font-jetbrains);
-  --font-hg: var(--font-poppins);
 
   /* Surfaces & ink */
   --color-background: var(--bg);
@@ -41,16 +40,6 @@
   --color-s4: var(--s4);
   --color-s5: var(--s5);
 
-  /* City accents — HeyGen 9-city ramp */
-  --color-c1: var(--c1);
-  --color-c2: var(--c2);
-  --color-c3: var(--c3);
-  --color-c4: var(--c4);
-  --color-c5: var(--c5);
-  --color-c6: var(--c6);
-  --color-c7: var(--c7);
-  --color-c8: var(--c8);
-  --color-c9: var(--c9);
 
   /* shadcn compatibility aliases */
   --color-card: var(--bg-2);
@@ -106,9 +95,6 @@
   --danger: #cc2b1d;
   --ok: #1a7f4b;
 
-  /* City accent defaults (overridden in .theme-heygen) */
-  --c1: #5324ee; --c2: #0b8ba3; --c3: #5d7c07; --c4: #d43f14; --c5: #9c6600;
-  --c6: #5324ee; --c7: #0b8ba3; --c8: #5d7c07; --c9: #d43f14;
 
   --shadow-card: 0 1px 2px rgba(20, 19, 26, 0.04), 0 12px 32px -12px rgba(20, 19, 26, 0.14);
   --shadow-lift: 0 2px 4px rgba(20, 19, 26, 0.05), 0 24px 48px -16px rgba(20, 19, 26, 0.22);
@@ -146,9 +132,6 @@
   --danger: #ff6a5c;
   --ok: #4ade80;
 
-  /* City accent defaults (overridden in .theme-heygen) */
-  --c1: #9b84ff; --c2: #4fd9e8; --c3: #d6f94f; --c4: #ff8a6b; --c5: #ffc75a;
-  --c6: #9b84ff; --c7: #4fd9e8; --c8: #d6f94f; --c9: #ff8a6b;
 
   --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
   --shadow-lift: 0 2px 4px rgba(0, 0, 0, 0.5), 0 24px 48px -16px rgba(0, 0, 0, 0.85);
@@ -409,9 +392,25 @@
 .u-marquee {
   display: flex;
   width: max-content;
-  animation: u-marquee 42s linear infinite;
+  animation: u-marquee 48s linear infinite;
 }
 .u-marquee-host:hover .u-marquee { animation-play-state: paused; }
+
+@keyframes u-marquee-reverse {
+  from { transform: translateX(-50%); }
+  to   { transform: translateX(0); }
+}
+.u-marquee-reverse {
+  display: flex;
+  width: max-content;
+  animation: u-marquee-reverse 52s linear infinite;
+}
+.u-marquee-host:hover .u-marquee-reverse { animation-play-state: paused; }
+
+.u-marquee-fade {
+  mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 6%, black 94%, transparent);
+}
 
 @keyframes u-pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
@@ -448,201 +447,4 @@
 .u-no-bar { scrollbar-width: none; -ms-overflow-style: none; }
 .u-no-bar::-webkit-scrollbar { display: none; }
 
-/* ═══════════════════════════════════════════════════════════════
-   HEYGEN INDIA ROADSHOW — SCOPED TOKEN OVERRIDE
-   .theme-heygen redefines CSS vars so every u-* class and
-   existing component renders HeyGen-coloured with zero edits.
-   body:has(.theme-heygen) lands tokens on body for overscroll.
-═══════════════════════════════════════════════════════════════ */
 
-/* LIGHT — poster-matched violet paper */
-body:has(.theme-heygen),
-.theme-heygen {
-  --bg: #f6f4fd;
-  --bg-2: #ffffff;
-  --bg-3: #efeafb;
-
-  --ink: #0e1130;
-  --ink-2: #56537a;
-
-  --line: rgba(14, 17, 48, 0.10);
-  --line-strong: rgba(14, 17, 48, 0.22);
-
-  --brand: #5b21f0;
-  --brand-ink: #ffffff;
-  --brand-soft: rgba(91, 33, 240, 0.07);
-
-  --pop: #14b8a6;
-  --pop-ink: #04201d;
-
-  --danger: #d92d20;
-  --ok: #059669;
-
-  /* 9-city accent ramp */
-  --c1: #7c3aed; --c2: #2563eb; --c3: #0d9488;
-  --c4: #e11d48; --c5: #db2777; --c6: #4338ca;
-  --c7: #059669; --c8: #9333ea; --c9: #ea580c;
-
-  /* Map --s1..s5 to city accents so existing components get HeyGen palette */
-  --s1: var(--c1); --s2: var(--c3); --s3: var(--c5); --s4: var(--c7); --s5: var(--c9);
-
-  --shadow-card: 0 1px 2px rgba(14, 17, 48, 0.04), 0 14px 36px -14px rgba(91, 33, 240, 0.20);
-  --shadow-lift: 0 2px 6px rgba(14, 17, 48, 0.05), 0 28px 56px -18px rgba(91, 33, 240, 0.30);
-  --grain-opacity: 0.03;
-
-  /* Gradients */
-  --hg-grad-india: linear-gradient(96deg, #5b21f0 0%, #2b7fe8 52%, #14b8a6 100%);
-  --hg-grad-road: linear-gradient(96deg, #5b21f0 0%, #3b6ff5 58%, #2b8ae8 100%);
-  --hg-grad-chrome: linear-gradient(135deg, #c9a8ff 0%, #f2b6ea 26%, #ffffff 46%, #8fe8e0 68%, #a8c4ff 100%);
-  --hg-grad-spine: linear-gradient(180deg, transparent 0%, var(--c1) 6%, var(--c2) 19%, var(--c3) 31%,
-                    var(--c4) 43%, var(--c5) 55%, var(--c6) 67%, var(--c7) 79%, var(--c8) 89%,
-                    var(--c9) 96%, transparent 100%);
-  --hg-grad-cta: linear-gradient(112deg, #5b21f0 0%, #7c3aed 38%, #db2777 76%, #ea580c 100%);
-  --hg-glow: radial-gradient(ellipse 78% 62% at 50% -8%, color-mix(in oklab, var(--brand) 26%, transparent), transparent 72%);
-  --hg-rule: linear-gradient(90deg, transparent, #5b21f0 18%, #2b7fe8 50%, #14b8a6 82%, transparent);
-}
-
-/* DARK */
-.dark body:has(.theme-heygen),
-.dark .theme-heygen {
-  --bg: #07061a;
-  --bg-2: #0f0d29;
-  --bg-3: #171438;
-
-  --ink: #f5f3ff;
-  --ink-2: #a7a2c8;
-
-  --line: rgba(255, 255, 255, 0.10);
-  --line-strong: rgba(255, 255, 255, 0.22);
-
-  --brand: #8156f5;
-  --brand-ink: #ffffff;
-  --brand-soft: rgba(129, 86, 245, 0.16);
-
-  --pop: #2dd4bf;
-  --pop-ink: #05201c;
-
-  --danger: #ff6a5c;
-  --ok: #34d399;
-
-  /* 9-city accent ramp — raised for dark bg contrast */
-  --c1: #a78bfa; --c2: #60a5fa; --c3: #2dd4bf;
-  --c4: #fb7185; --c5: #f472b6; --c6: #818cf8;
-  --c7: #34d399; --c8: #c084fc; --c9: #fb923c;
-
-  --s1: var(--c1); --s2: var(--c3); --s3: var(--c5); --s4: var(--c7); --s5: var(--c9);
-
-  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.6), 0 14px 36px -14px rgba(0, 0, 0, 0.8);
-  --shadow-lift: 0 2px 6px rgba(0, 0, 0, 0.6), 0 28px 56px -18px rgba(0, 0, 0, 0.9);
-  --grain-opacity: 0.05;
-
-  --hg-grad-india: linear-gradient(96deg, #8156f5 0%, #60a5fa 52%, #2dd4bf 100%);
-  --hg-grad-road: linear-gradient(96deg, #8156f5 0%, #818cf8 58%, #60a5fa 100%);
-  --hg-grad-chrome: linear-gradient(135deg, #c9a8ff 0%, #f2b6ea 26%, #ffffff 46%, #8fe8e0 68%, #a8c4ff 100%);
-  --hg-grad-spine: linear-gradient(180deg, transparent 0%, var(--c1) 6%, var(--c2) 19%, var(--c3) 31%,
-                    var(--c4) 43%, var(--c5) 55%, var(--c6) 67%, var(--c7) 79%, var(--c8) 89%,
-                    var(--c9) 96%, transparent 100%);
-  --hg-grad-cta: linear-gradient(112deg, #8156f5 0%, #a78bfa 38%, #f472b6 76%, #fb923c 100%);
-  --hg-glow: radial-gradient(ellipse 78% 62% at 50% -8%, color-mix(in oklab, var(--brand) 34%, transparent), transparent 72%);
-  --hg-rule: linear-gradient(90deg, transparent, #8156f5 18%, #60a5fa 50%, #2dd4bf 82%, transparent);
-}
-
-/* ═══════════════════════════════════════════════
-   HEYGEN — PAGE-SCOPED UTILITIES
-═══════════════════════════════════════════════ */
-
-.hg-display {
-  font-family: var(--font-hg), "Poppins", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 0.95;
-}
-
-.hg-h1 { font-size: clamp(2.6rem, 7.4vw, 6.4rem); }
-.hg-h2 { font-size: clamp(2rem, 4.8vw, 3.6rem); }
-.hg-h3 { font-size: clamp(1.75rem, 4vw, 3rem); }
-.hg-h4 { font-size: clamp(1.15rem, 2vw, 1.6rem); font-weight: 600; }
-
-.hg-kicker {
-  font-family: var(--font-hg), "Poppins", ui-sans-serif, system-ui, sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.22em;
-  font-size: clamp(0.75rem, 1.4vw, 1rem);
-  line-height: 1;
-}
-
-/* Gradient-clipped text — solid fallback declared first */
-.hg-grad {
-  color: var(--brand);
-  background: var(--hg-grad-india);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.hg-grad-road {
-  color: var(--brand);
-  background: var(--hg-grad-road);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* Poster's gradient divider rule */
-.hg-rule {
-  height: 1px;
-  background: var(--hg-rule);
-}
-
-/* Hero ambient glow */
-.hg-glow {
-  position: absolute;
-  inset: 0;
-  background: var(--hg-glow);
-  pointer-events: none;
-}
-
-/* Iridescent chrome blob */
-.hg-chrome {
-  position: absolute;
-  border-radius: 50%;
-  background: var(--hg-grad-chrome);
-  filter: blur(80px);
-  mix-blend-mode: plus-lighter;
-  opacity: 0.35;
-  pointer-events: none;
-}
-@media (prefers-color-scheme: light) {
-  .hg-chrome { mix-blend-mode: normal; opacity: 0.55; }
-}
-
-/* Poster outline pill badge */
-.hg-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 0.65rem 1.2rem;
-  border-radius: 999px;
-  border: 1px solid var(--line-strong);
-  background: var(--bg-2);
-  font-weight: 600;
-  font-size: 0.9375rem;
-}
-
-/* Route spine line */
-.hg-spine {
-  background: var(--hg-grad-spine);
-}
-
-/* Dotted India map watermark */
-.hg-map {
-  position: absolute;
-  inset: 0;
-  opacity: 0.06;
-  pointer-events: none;
-  background-image: radial-gradient(circle 1.5px at center, var(--ink-2) 1px, transparent 1px);
-  background-size: 14px 14px;
-  mask-image: radial-gradient(ellipse 60% 80% at 40% 60%, #000 10%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 60% 80% at 40% 60%, #000 10%, transparent 70%);
-}
