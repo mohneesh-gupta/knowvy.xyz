@@ -50,7 +50,7 @@ export function HeroSection() {
         >
           <span className="u-label inline-flex items-center gap-2.5">
             <span className="u-pulse inline-block size-1.5 rounded-full bg-pop" />
-            Bhopal, India
+            India
           </span>
           <span className="u-label text-muted-foreground">
             Student developer community
