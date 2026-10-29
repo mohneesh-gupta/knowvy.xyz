@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Images } from "lucide-react";
 
 const STATS = [
-  { value: "1,500+", label: "Active Members", highlight: "Across India" },
-  { value: "30+", label: "Events & Meetups", highlight: "Hosted" },
+  { value: "4,500+", label: "Active Members", highlight: "Across India" },
+  { value: "35+", label: "Events & Meetups", highlight: "Hosted" },
   { value: "3", label: "Hackathons Hosted", highlight: "National" },
   { value: "10+", label: "National Presence", highlight: "Cities" },
 ];
