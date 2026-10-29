@@ -6,13 +6,13 @@ import { Section, Reveal, revealUp, stagger } from "./ui/kit";
 
 const MILESTONES = [
   {
-    value: "1,500+",
+    value: "4,500+",
     label: "Active Members",
     desc: "Students & developers across Bhopal colleges.",
     icon: Users,
   },
   {
-    value: "30+",
+    value: "35+",
     label: "Events Hosted",
     desc: "Workshops, Dev Days, and community meetups.",
     icon: Calendar,
