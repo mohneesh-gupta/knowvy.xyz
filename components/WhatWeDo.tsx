@@ -4,11 +4,19 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { Section, SectionHead, revealUp, stagger } from "./ui/kit";
 
-const TRACKS = [
+interface Track {
+  idx: string;
+  title: string;
+  meta: string;
+  flagship?: boolean;
+}
+
+const TRACKS: Track[] = [
   {
     idx: "01",
     title: "Hackathons",
     meta: "Offline & remote · Massive Prize pool",
+    flagship: true,
   },
   {
     idx: "02",
