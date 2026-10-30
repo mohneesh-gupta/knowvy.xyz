@@ -60,7 +60,7 @@ const PAST_EVENTS: PastEventItem[] = [
   {
     id: 4,
     title: "Miro Meetup Bhopal",
-    date: "Sep 05, 2025",
+    date: "Jul 05, 2026",
     location: "Interactive Startup Hub, Bhopal",
     attendees: "140+ Designers & Coders",
     category: "Meetup",
@@ -69,12 +69,12 @@ const PAST_EVENTS: PastEventItem[] = [
   },
   {
     id: 5,
-    title: "Agentic AI Hackathon 2025",
+    title: "Hacktoberfest Bhopal 2k26",
     date: "Nov 20–21, 2025",
     location: "Bhopal / Hybrid",
-    attendees: "350+ Hackers (45 Teams)",
+    attendees: "150+ Hackers",
     category: "Hackathon",
-    desc: "A 36-hour intense hackathon where student teams built autonomous multi-agent systems, LangChain workflows, and AI vector database tools.",
+    desc: "A day full of open-source building, communications and contributions. And an intense hackathon where student teams built autonomous multi-agent systems, LangChain workflows, and AI vector database tools.",
     highlights: ["₹1.5L Prize Pool", "VC Mentorship", "4 Funded Prototypes"],
   },
   {
@@ -89,13 +89,13 @@ const PAST_EVENTS: PastEventItem[] = [
   },
   {
     id: 7,
-    title: "Open Source Sprint Q1",
-    date: "Jan 24, 2026",
+    title: "LYZR AI Build Day",
+    date: "Aug 23, 2026",
     location: "Online / Discord",
     attendees: "210+ Contributors",
     category: "Workshop",
-    desc: "A weekend PR sprint guiding student developers to resolve real GitHub issues, review pull requests, and contribute to popular open source repos.",
-    highlights: ["48 Merged PRs", "First-time Contributor Badges", "T-Shirt Giveaways"],
+    desc: "A room full of builder and developers for a discussion on Agentic AI and building personal Agents.",
+    highlights: ["48 Agents Created", "First-time Contributor Badges", "T-Shirt Giveaways"],
   },
   {
     id: 8,

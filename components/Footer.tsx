@@ -19,9 +19,8 @@ const NAV = [
   { name: "What We Do", href: "/#what-we-do" },
   { name: "Events", href: "/#past-events" },
   { name: "Programs", href: "/#what-we-do" },
-  { name: "Resources", href: "/#faq" },
   { name: "Team", href: "/#team" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Join Us", href: "/#join" },
 ];
 
 const LEGAL = [
@@ -181,7 +180,7 @@ export function Footer() {
               <span className="min-w-0 flex-1">
                 <span className="block text-[0.8125rem] font-bold">Join group</span>
                 <span className="u-label-sm mt-1 block text-muted-foreground">
-                  2,000+ builders online
+                  5,000+ builders online
                 </span>
               </span>
               <ArrowUpRight

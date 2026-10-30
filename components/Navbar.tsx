@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Sun, Moon, ArrowUpRight } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 import { ThemeToggle } from "./ThemeToggle";
@@ -14,13 +15,14 @@ const NAV_LINKS = [
   { name: "Gallery", href: "/#gallery" },
   { name: "Team", href: "/#team" },
   { name: "Milestones", href: "/#achievements" },
-  { name: "FAQ", href: "/#faq" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Join Us", href: "/#join" },
+  { name: "Join Core Team", href: "/#core-team" },
 ];
 
 export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -37,6 +39,18 @@ export function Navbar() {
     };
   }, [mobileOpen]);
 
+  /** Navigates to home screen top, or smoothly scrolls to top if already on home */
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setMobileOpen(false);
+    if (pathname === "/") {
+      e.preventDefault();
+      if (window.location.hash) {
+        window.history.pushState(null, "", "/");
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       <header className="fixed inset-x-0 top-0 z-50 select-none">
@@ -44,16 +58,19 @@ export function Navbar() {
           initial={{ y: -24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className={`mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-6 transition-all duration-300 md:px-10 ${
-            scrolled ? "py-3" : "py-5"
-          }`}
+          className={`mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-6 transition-all duration-300 md:px-10 ${scrolled ? "py-3" : "py-5"
+            }`}
         >
-          {/* Wordmark */}
-          <Link href="/" className="group flex shrink-0 items-center gap-2.5">
+          {/* Wordmark — moves to home screen top */}
+          <Link
+            href="/"
+            onClick={handleLogoClick}
+            className="group flex shrink-0 cursor-pointer items-center gap-2.5"
+          >
             <span className="grid size-8 place-items-center rounded-lg bg-brand text-brand-ink transition-transform duration-300 group-hover:-rotate-6">
               <span className="u-display text-[15px] leading-none">K</span>
             </span>
-            <span className="hidden flex-col leading-none sm:flex">
+            <span className="hidden flex-col leading-none text-left sm:flex">
               <span className="u-display text-base leading-none">Knowvy</span>
               <span className="u-label-sm mt-1 text-muted-foreground">Technologies</span>
             </span>
@@ -61,11 +78,10 @@ export function Navbar() {
 
           {/* Centred pill nav */}
           <nav
-            className={`hidden items-center gap-0.5 rounded-full border p-1 transition-all duration-300 lg:flex ${
-              scrolled
-                ? "border-border bg-background/80 shadow-[var(--shadow-card)] backdrop-blur-xl"
-                : "border-transparent bg-transparent"
-            }`}
+            className={`hidden items-center gap-0.5 rounded-full border p-1 transition-all duration-300 lg:flex ${scrolled
+              ? "border-border bg-background/80 shadow-[var(--shadow-card)] backdrop-blur-xl"
+              : "border-transparent bg-transparent"
+              }`}
           >
             {NAV_LINKS.map((link) => (
               <Link
@@ -99,52 +115,54 @@ export function Navbar() {
             </button>
           </div>
         </motion.div>
-      </header>
+      </header >
 
       {/* Mobile drawer */}
       <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-background lg:hidden"
-          >
-            <div className="flex h-full flex-col justify-between px-6 pb-10 pt-28">
-              <nav className="flex flex-col">
-                {NAV_LINKS.map((link, i) => (
-                  <motion.div
-                    key={link.name}
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.04 + i * 0.035, duration: 0.4 }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="flex items-baseline justify-between border-b border-border py-4"
+        {
+          mobileOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              className="fixed inset-0 z-40 bg-background lg:hidden"
+            >
+              <div className="flex h-full flex-col justify-between px-6 pb-10 pt-28">
+                <nav className="flex flex-col">
+                  {NAV_LINKS.map((link, i) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, y: 14 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.04 + i * 0.035, duration: 0.4 }}
                     >
-                      <span className="u-display text-[7vw] leading-none sm:text-3xl flex items-center gap-2.5">
-                        {link.name}
-                      </span>
-                      <span className="u-label-sm text-muted-foreground">
-                        {String(i + 1).padStart(2, "0")}
-                      </span>
-                    </Link>
-                  </motion.div>
-                ))}
-              </nav>
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileOpen(false)}
+                        className="flex items-baseline justify-between border-b border-border py-4"
+                      >
+                        <span className="u-display text-[7vw] leading-none sm:text-3xl flex items-center gap-2.5">
+                          {link.name}
+                        </span>
+                        <span className="u-label-sm text-muted-foreground">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
 
-              <Link href="/#join" onClick={() => setMobileOpen(false)} className="mt-8">
-                <span className="u-btn u-btn-primary w-full">
-                  Join community <ArrowUpRight size={16} />
-                </span>
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                <Link href="/#join" onClick={() => setMobileOpen(false)} className="mt-8">
+                  <span className="u-btn u-btn-primary w-full">
+                    Join community <ArrowUpRight size={16} />
+                  </span>
+                </Link>
+              </div>
+            </motion.div>
+          )
+        }
+      </AnimatePresence >
     </>
   );
 }

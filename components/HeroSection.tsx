@@ -117,7 +117,7 @@ export function HeroSection() {
           >
             <figure className="group relative overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)]">
               <img
-                src="/hero-collage.png"
+                src="/gallery/8-hero-collage.png"
                 alt="Highlights from Knowvy community events across Bhopal"
                 className="w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
               />
@@ -139,11 +139,9 @@ export function HeroSection() {
           {STATS.map((stat, i) => (
             <div
               key={stat.label}
-              className={`border-border px-1 py-7 md:px-6 ${
-                i % 2 === 0 ? "" : "border-l"
-              } ${i < 2 ? "border-b md:border-b-0" : ""} ${
-                i === 2 ? "md:border-l" : ""
-              }`}
+              className={`border-border px-1 py-7 md:px-6 ${i % 2 === 0 ? "" : "border-l"
+                } ${i < 2 ? "border-b md:border-b-0" : ""} ${i === 2 ? "md:border-l" : ""
+                }`}
             >
               <dt className="u-label-sm text-brand">{stat.highlight}</dt>
               <dd className="u-display mt-3 text-[clamp(2rem,4vw,3.2rem)] leading-none">

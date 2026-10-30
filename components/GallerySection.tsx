@@ -160,7 +160,7 @@ export function GallerySection() {
             Capturing the energy <span className="text-brand">across every</span> floor
           </>
         }
-        aside="A unified archive of hackathons, dev days, keynotes, live code challenges, and late-night builds across Bhopal, Gwalior, Jabalpur, Vidisha, Satna, and Jhansi."
+        aside="A unified archive of hackathons, dev days, keynotes, live code challenges, and late-night builds across Bhopal, Delhi, Gwalior, Jabalpur, Mumbai, and Jhansi."
       />
 
       {/* ── Key Metrics Ribbon ── */}
@@ -171,11 +171,11 @@ export function GallerySection() {
         </span>
         <span className="u-label-sm inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-muted-foreground">
           <span className="size-2 rounded-full bg-[var(--s2)]" />
-          <strong className="text-foreground">6+</strong> Cities Reached
+          <strong className="text-foreground">10+</strong> Cities Reached
         </span>
         <span className="u-label-sm inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-muted-foreground">
           <span className="size-2 rounded-full bg-[var(--s4)]" />
-          <strong className="text-foreground">1,500+</strong> Builders & Creators
+          <strong className="text-foreground">4,500+</strong> Builders & Creators
         </span>
         <span className="u-label-sm inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3 py-1.5 text-muted-foreground">
           <span className="size-2 rounded-full bg-[var(--s3)]" />
@@ -208,7 +208,7 @@ export function GallerySection() {
                   className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                
+
                 {/* Event tag */}
                 <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-2.5 py-1 backdrop-blur-md">
                   <span
@@ -245,7 +245,7 @@ export function GallerySection() {
                   className="size-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                
+
                 {/* Event tag */}
                 <div className="absolute left-3 top-3 flex items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-2.5 py-1 backdrop-blur-md">
                   <span
@@ -287,11 +287,10 @@ export function GallerySection() {
                   setActiveCategory(cat);
                   setExpanded(false);
                 }}
-                className={`relative shrink-0 rounded-full border px-4 py-2 text-[0.8125rem] font-semibold transition-all duration-200 ${
-                  isActive
-                    ? "border-transparent bg-foreground text-background shadow-sm"
-                    : "border-border text-muted-foreground hover:border-border-strong hover:text-foreground"
-                }`}
+                className={`relative shrink-0 rounded-full border px-4 py-2 text-[0.8125rem] font-semibold transition-all duration-200 ${isActive
+                  ? "border-transparent bg-foreground text-background shadow-sm"
+                  : "border-border text-muted-foreground hover:border-border-strong hover:text-foreground"
+                  }`}
               >
                 {isActive && (
                   <motion.div
@@ -359,8 +358,8 @@ export function GallerySection() {
             const aspectClass = isWide
               ? "aspect-[16/10] sm:col-span-2"
               : i % 5 === 2
-              ? "aspect-[4/3]"
-              : "aspect-[4/3]";
+                ? "aspect-[4/3]"
+                : "aspect-[4/3]";
 
             return (
               <motion.figure
@@ -496,11 +495,10 @@ export function GallerySection() {
                 <button
                   onClick={() => setIsPlaying((p) => !p)}
                   title={isPlaying ? "Pause slideshow (Space)" : "Play slideshow (Space)"}
-                  className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${
-                    isPlaying
-                      ? "border-brand bg-brand text-brand-ink"
-                      : "border-white/20 bg-white/10 text-white hover:bg-white/20"
-                  }`}
+                  className={`inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-semibold transition-colors ${isPlaying
+                    ? "border-brand bg-brand text-brand-ink"
+                    : "border-white/20 bg-white/10 text-white hover:bg-white/20"
+                    }`}
                 >
                   {isPlaying ? <Pause size={12} fill="currentColor" /> : <Play size={12} fill="currentColor" />}
                   <span className="hidden sm:inline">{isPlaying ? "Auto Playing" : "Autoplay"}</span>
@@ -602,11 +600,10 @@ export function GallerySection() {
                       <button
                         key={`thumb-${photo.src}-${idx}`}
                         onClick={() => setLightboxIdx(idx)}
-                        className={`relative aspect-[4/3] h-11 shrink-0 overflow-hidden rounded-lg border transition-all duration-200 ${
-                          isCurrent
-                            ? "border-brand ring-2 ring-brand ring-offset-2 ring-offset-black"
-                            : "border-white/20 opacity-50 hover:opacity-100"
-                        }`}
+                        className={`relative aspect-[4/3] h-11 shrink-0 overflow-hidden rounded-lg border transition-all duration-200 ${isCurrent
+                          ? "border-brand ring-2 ring-brand ring-offset-2 ring-offset-black"
+                          : "border-white/20 opacity-50 hover:opacity-100"
+                          }`}
                       >
                         <img
                           src={photo.src}

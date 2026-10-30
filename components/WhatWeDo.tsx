@@ -7,13 +7,12 @@ import { Section, SectionHead, revealUp, stagger } from "./ui/kit";
 const TRACKS = [
   {
     idx: "01",
-    title: "Hackathons with stakes, not stickers",
-    meta: "48-hour builds · Offline & remote · Prize pool ₹10L+",
-    flagship: true,
+    title: "Hackathons",
+    meta: "Offline & remote · Massive Prize pool",
   },
   {
     idx: "02",
-    title: "Workshops & Cohorts",
+    title: "Workshops",
     meta: "Hands-on · Small cohorts · Mentorship",
   },
   {
@@ -41,16 +40,6 @@ const TRACKS = [
     title: "Career Sessions",
     meta: "Resume review · Mock interviews · Offers",
   },
-  {
-    idx: "08",
-    title: "Agentic AI",
-    meta: "Prompting · Multi-agent pipelines · Vector search",
-  },
-  {
-    idx: "09",
-    title: "Cloud & DevOps",
-    meta: "Serverless · Containers · CI/CD pipelines",
-  },
 ];
 
 export function WhatWeDo() {
@@ -61,7 +50,7 @@ export function WhatWeDo() {
         eyebrow="What we do"
         title={
           <>
-            Nine ways to <span className="text-brand">ship</span> — pick your entry
+            Seven ways to <span className="text-brand">ship</span> - pick your entry
             point
           </>
         }

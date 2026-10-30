@@ -4,11 +4,19 @@ import { motion } from "framer-motion";
 import { Section, SectionHead, revealUp, stagger } from "./ui/kit";
 
 const COLLABORATORS = [
-  { name: "Google for Developers", category: "Community Partner", tone: "var(--s1)" },
-  { name: "Microsoft for Startups", category: "Cloud Partner", tone: "var(--s2)" },
-  { name: "GitHub Education", category: "Dev Tooling", tone: "var(--s3)" },
-  { name: "TIT Bhopal", category: "College Chapter", tone: "var(--s4)" },
-  { name: "Unstop", category: "Platform Partner", tone: "var(--s5)" },
+  { name: "Google for Developers", tone: "var(--s1)" },
+  { name: "Microsoft for Students", tone: "var(--s2)" },
+  { name: "GitHub Education", tone: "var(--s3)" },
+  { name: "MLH", tone: "var(--s4)" },
+  { name: "Colleges & Universities", tone: "var(--s5)" },
+  { name: "Unstop", tone: "var(--s1)" },
+  { name: "HeyGen", tone: "var(--s2)" },
+  { name: "Miro", tone: "var(--s3)" },
+  { name: "LYZR AI", tone: "var(--s4)" },
+  { name: "GMI Cloud", tone: "var(--s5)" },
+  { name: "GSSOC", tone: "var(--s1)" },
+  { name: "Qwenwork", tone: "var(--s2)" },
+  { name: "AWS", tone: "var(--s3)" },
 ];
 
 export function PartnersSection() {
@@ -16,45 +24,17 @@ export function PartnersSection() {
   const track = [...COLLABORATORS, ...COLLABORATORS];
 
   return (
-    <Section id="partners">
+    <Section id="partners" className="!pb-10 md:!pb-14">
       <SectionHead
         index="10"
         eyebrow="Partners & Collaborators"
         title={
           <>
-            Collaborated with <span className="text-brand">leading colleges</span> &
+            Collaborated with <span className="text-brand">leading organizations</span> &
             companies
           </>
         }
       />
-
-      {/* Partner grid */}
-      <motion.ul
-        variants={stagger}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        className="mt-14 grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-5"
-      >
-        {COLLABORATORS.map((p) => (
-          <motion.li
-            key={p.name}
-            variants={revealUp}
-            className="u-card group flex min-h-[148px] flex-col justify-between p-5"
-          >
-            <span
-              className="size-2.5 rounded-full transition-transform duration-300 group-hover:scale-125"
-              style={{ background: p.tone }}
-            />
-            <div>
-              <h3 className="text-[0.9375rem] font-bold leading-snug">{p.name}</h3>
-              <span className="u-label-sm mt-2 block text-muted-foreground">
-                {p.category}
-              </span>
-            </div>
-          </motion.li>
-        ))}
-      </motion.ul>
 
       {/* Type marquee */}
       <div

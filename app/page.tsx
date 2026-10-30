@@ -6,11 +6,9 @@ import { WhatWeDo } from "@/components/WhatWeDo";
 import { PastEvents } from "@/components/PastEvents";
 import { GallerySection } from "@/components/GallerySection";
 import { Team } from "@/components/Team";
-import { Testimonials } from "@/components/Testimonials";
 import { Achievements } from "@/components/Achievements";
 import { JoinUsSection } from "@/components/JoinUsSection";
-import { FAQSection } from "@/components/FAQSection";
-import { ContactSection } from "@/components/ContactSection";
+import { CoreTeamCTA } from "@/components/CoreTeamCTA";
 import { Footer } from "@/components/Footer";
 
 export default function Home() {
@@ -24,13 +22,11 @@ export default function Home() {
       <PastEvents />
       <GallerySection />
       <Team />
-      <Testimonials />
       {/* Colour block — lime */}
       <Achievements />
       {/* Colour block — brand violet */}
       <JoinUsSection />
-      <FAQSection />
-      <ContactSection />
+      <CoreTeamCTA />
       <Footer />
     </main>
   );
